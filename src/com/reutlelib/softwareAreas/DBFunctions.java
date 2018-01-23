@@ -5,7 +5,8 @@ import com.reutleib.GUI.*;
 public class DBFunctions {
 
 	// sql quaries:
-	public static final String createTable_Project = "CREATE TABLE `db_reutleib`.`project` ("
+	public static final String createTable_Project = 
+			"CREATE TABLE `db_reutleib`.`project` ("
 			+ "`project_number` INT NOT NULL," + "`project_name` VARCHAR(45) NOT NULL,"
 			+ "`customer_name` VARCHAR(45) NOT NULL," + "`start date` DATE NOT NULL,"
 			+ "`description` VARCHAR(80) NULL," + "`development tools` TEXT(200) NULL," + "`grade` INT UNSIGNED NULL,"
@@ -174,6 +175,9 @@ public class DBFunctions {
 	public static final String query_busyEngineers = "select distinct id_engineer, (select `first name` from "
 			+ " engineer where id_engineer = engineer_id) as firstName,  "
 			+ " (select `last name` from engineer where id_engineer = engineer_id) as lastName from working_on ";
+	
+
+	
 	// trigger:
 	public static final String trigger_gradeMonth = "	CREATE DEFINER=`root`@`localhost` TRIGGER `db_reutleib`.`grades_BEFORE_INSERT` BEFORE INSERT ON `grades` FOR EACH ROW"
 			+ "	BEGIN " + "		SET new.month = month(curdate());" + "		END";
